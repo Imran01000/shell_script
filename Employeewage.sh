@@ -1,12 +1,14 @@
 #!/bin/bash -x
-#To check wheather the employee is present or abscent.
+#To calculate daily empolyee wage.
 #variables.
-isPresent=1
-attendence=$(($RANDOM%2+1))
+isPresent=1;
+attendence=$(($RANDOM%2+1));
 if (($isPresent==$attendence))
 then
-	echo "Employee is present";
+	empRatePerHr=10;
+	empWorkHr=2;
+	empWage=$(($empRatePerHr*$empWorkHr));
+	echo "Employee wage is $empWage";
 else
 	echo "Employee is abscent";
 fi
-
