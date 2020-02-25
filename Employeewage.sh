@@ -33,6 +33,7 @@ salary=$(($empRatePerHr*$empWorkHr));
 echo "The salary for employee is $salary";
 
 #Solving using case statement.
+#variables
 
 isPartTime=1;
 isFullTime=2;
@@ -55,6 +56,28 @@ case $attendence in
 		echo "Employee is abscent";
 esac
 
-
-
- 
+#Calculating wages for a month.
+#variables
+isPartTime=1;
+isFullTime=2;
+totalSalary=0;
+empRatePerHr=10;
+numofdaysworking=28;
+for((day=1;day<=$numofdaysworking;day++))
+do 
+	attendence=$(($RANDOM%3));
+		case $attendence in
+			1)
+				empWorkHr=2;
+				;;
+			2)
+				empWorkHr=5;
+				;;
+			*)
+				empWorkHr=0;
+				;;
+		esac
+	salary=$(($empWorkHr*$empRatePerHr));
+	totalSalary=$(($totalSalary+$salary));
+done
+echo "The total salary for an employees are $totalSalary";
