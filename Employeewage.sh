@@ -14,6 +14,11 @@ echo "welcome employees ";
 attendence=$(($RANDOM%2+1))
 if (($isPresent==$attendence))
 then
+esac
+   totalEmpHr=$(($totalEmpHr+$empWorkHr))
+done
+totalSalary=$(($totalEmpHr*$empRatePerHr))
+echo "The total salary is $totalSalary";
 	echo "Employee is present";
 else
 	echo "Employee is abscent";
@@ -129,8 +134,9 @@ do
    ((totalWorkingDays++))
 	empWorkHr="$(( $getWorkingHr $(($RANDOM%3)) ))"
 	totalEmpHr=$(($totalEmpHr+$empWorkHr))
-	empWage[$totalWorkingDays]="$(( $calDailyWage $empWorkHr))"
+	empWage[$totalWorkingDays]="$(( $calDailyWage $empWorkHr))" #wages are store in array.
 done
+	
 totalSalary=$(($totalEmpHr*$empRatePerHr))
 echo "Daily Wage" ${empWage[@]};
 
