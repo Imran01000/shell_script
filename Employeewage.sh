@@ -40,21 +40,21 @@ salary=$(($empRatePerHr*$empWorkHr));
 attendence=$(($RANDOM%3))
 case $attendence in 
 	1)
-   	empWorkHr=2;
-		salary=$(($empRatePerHr*$empWorkHr));
-		echo "The salary for part timr employee is $salary";
-		;;
+	empWorkHr=2;
+	salary=$(($empRatePerHr*$empWorkHr));
+	echo "The salary for part timr employee is $salary";
+	;;
  
 	2)
-      empWorkHr=5;
-      salary=$(($empRatePerHr*$empWorkHr));
-		echo "The salary for full time employee is $salary";
-		;;
+   empWorkHr=5;
+   salary=$(($empRatePerHr*$empWorkHr));
+	echo "The salary for full time employee is $salary";
+	;;
 	*)
-   	empWorkHr=0;
-		echo "Employee is abscent";
+	empWorkHr=0;
+	echo "Employee is abscent";
 esac
-
+========
 #Calculating wages for a month.
 #variables.
 totalSalary=0;
@@ -129,12 +129,12 @@ function calDailyWage(){
 while(( (($totalEmpHr < $maxHrInMonth)) && (($totalWorkingDays < $numOfDaysWorking)) ))
 do 
    ((totalWorkingDays++))
-	empWorkHr="$(( $getWorkingHr $(($RANDOM%3)) ))"
+	empWorkHr=$(( $getWorkingHr $(($RANDOM%3)) ))
 	totalEmpHr=$(($totalEmpHr+$empWorkHr))
-	empWage"[$totalWorkingDays"]="$(( $calDailyWage $empWorkHr))" #wages are store in dictionary.
+	empWage["$totalWorkingDays"]="$(( $calDailyWage $empWorkHr))" #wages are store in dictionary.
 done
 	
-totalSalary=$((calDailyWage $totalEmpHr))
+totalSalary="$(($calDailyWage $totalEmpHr))"
 echo "Daily Wage" ${empWage[@]};
 echo "All keys" ${!empWage[@]};
 
