@@ -7,7 +7,7 @@ empRatePerHr=10;
 numOfDaysWorking=28;
 
 #To displaying welcome to employee.
-echo "welcome employees ";
+	echo "welcome employees ";
 
 #To check wheather the employee is present or abscent.
 
@@ -18,14 +18,8 @@ then
 else
 	echo "Employee is absent"
 fi
-   totalEmpHr=$(($totalEmpHr+$empWorkHr))
-done
-totalSalary=$(($totalEmpHr*$empRatePerHr))
-echo "The total salary is $totalSalary";
-	echo "Employee is present";
-else
-	echo "Employee is abscent";
-fi
+
+
 #To calculate daily empolyee wage and also for part time employee.
 
 attendence=$(($RANDOM%3))
@@ -39,7 +33,7 @@ else
 	empWorkHr=0;
 fi
 salary=$(($empRatePerHr*$empWorkHr));
-echo "The salary for employee is $salary";
+	echo "The salary for employee is $salary";
 
 #Solving using case statement.
 
@@ -82,7 +76,7 @@ do
 	salary=$(($empWorkHr*$empRatePerHr));
 	totalSalary=$(($totalSalary+$salary));
 done
-echo "The total salary for an employees are $totalSalary";
+	echo "The total salary for an employees are $totalSalary";
 
 #Calculating wages till number of woring days or total working hours per month is reached.
 #variables.
