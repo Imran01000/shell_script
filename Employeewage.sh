@@ -102,3 +102,29 @@ done
 totalSalary=$(($totalEmpHr*$empRatePerHr))
 echo "The total salary is $totalSalary";
 
+#Calculating wages till number of woring days or total working hours per month is reached.
+#variables.
+totalEmpHr=0;
+totalWorkingDays=0
+maxHrInMonth=10
+function getWorkingHr(){
+	case $1 in
+			1)
+				empWorkHr=2;
+				;;
+			2)
+				empWorkHr=5;
+				;;
+			*)
+				empWorkHr=0;
+	esac
+}
+while(( (($totalEmpHr < $maxHrInMonth)) && (($totalWorkingDays < $numOfDaysWorking)) ))
+do 
+   ((totalWorkingDays++))
+	empWorkHr="$(( $getWorkingHr $(($RANDOM%3)) ))"
+	totalEmpHr=$(($totalEmpHr+$empWorkHr))
+done
+totalSalary=$(($totalEmpHr*$empRatePerHr))
+echo "The total salary is $totalSalary";
+
