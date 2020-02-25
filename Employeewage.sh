@@ -31,3 +31,30 @@ else
 fi
 salary=$(($empRatePerHr*$empWorkHr));
 echo "The salary for employee is $salary";
+
+#Solving using case statement.
+
+isPartTime=1;
+isFullTime=2;
+empRatePerHr=10;
+attendence=$(($RANDOM%3))
+case $attendence in 
+	1)
+   	empWorkHr=2;
+		salary=$(($empRatePerHr*$empWorkHr));
+		echo "The salary for part timr employee is $salary";
+		;;
+ 
+	2)
+      empWorkHr=5;
+      salary=$(($empRatePerHr*$empWorkHr));
+		echo "The salary for full time employee is $salary";
+		;;
+	*)
+   	empWorkHr=0;
+		echo "Employee is abscent";
+esac
+
+
+
+ 
