@@ -1,11 +1,16 @@
 #!/bin/bash -x
+#constant variables.
+isPresent=1;
+isPartTime=1;
+isFullTime=2;
+empRatePerHr=10;
+numOfDaysWorking=28;
+
 #To displaying welcome to employee.
 echo "welcome employees ";
 
 #To check wheather the employee is present or abscent.
-#variables.
 
-isPresent=1
 attendence=$(($RANDOM%2+1))
 if (($isPresent==$attendence))
 then
@@ -14,11 +19,7 @@ else
 	echo "Employee is abscent";
 fi
 #To calculate daily empolyee wage and also for part time employee.
-#variables.
 
-isPartTime=1;
-isFullTime=2;
-empRatePerHr=10;
 attendence=$(($RANDOM%3))
 if (($isFullTime==$attendence))
 then
@@ -33,11 +34,7 @@ salary=$(($empRatePerHr*$empWorkHr));
 echo "The salary for employee is $salary";
 
 #Solving using case statement.
-#variables
 
-isPartTime=1;
-isFullTime=2;
-empRatePerHr=10;
 attendence=$(($RANDOM%3))
 case $attendence in 
 	1)
@@ -57,13 +54,10 @@ case $attendence in
 esac
 
 #Calculating wages for a month.
-#variables
-isPartTime=1;
-isFullTime=2;
+#variables.
 totalSalary=0;
-empRatePerHr=10;
-numofdaysworking=28;
-for((day=1;day<=$numofdaysworking;day++))
+
+for((day=1;day<=$numOfDaysWorking;day++))
 do 
 	attendence=$(($RANDOM%3));
 		case $attendence in
@@ -81,3 +75,30 @@ do
 	totalSalary=$(($totalSalary+$salary));
 done
 echo "The total salary for an employees are $totalSalary";
+
+#Calculating wages till number of woring days or total working hours per month is reached.
+#variables.
+totalEmpHr=0;
+totalWorkingDays=0
+maxHrInMonth=10
+
+while(( (($totalEmpHr < $maxHrInMonth)) && (($totalWorkingDays < $numOfDaysWorking)) ))
+do 
+	((totalWorkingDays++))
+	attendence=$(($RANDOM%3));
+	case $attendence in
+			1)
+				empWorkHr=2;
+				;;
+			2)
+				empWorkHr=5;
+				;;
+			*)
+				empWorkHr=0;
+				;;
+	esac
+	totalEmpHr=$(($totalEmpHr+$empWorkHr))
+done
+totalSalary=$(($totalEmpHr*$empRatePerHr))
+echo "The total salary is $totalSalary";
+
