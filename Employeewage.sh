@@ -14,7 +14,10 @@ echo "welcome employees ";
 attendence=$(($RANDOM%2+1))
 if (($isPresent==$attendence))
 then
-esac
+	echo "Employee is present"
+else
+	echo "Employee is absent"
+fi
    totalEmpHr=$(($totalEmpHr+$empWorkHr))
 done
 totalSalary=$(($totalEmpHr*$empRatePerHr))
@@ -134,9 +137,10 @@ do
    ((totalWorkingDays++))
 	empWorkHr="$(( $getWorkingHr $(($RANDOM%3)) ))"
 	totalEmpHr=$(($totalEmpHr+$empWorkHr))
-	empWage[$totalWorkingDays]="$(( $calDailyWage $empWorkHr))" #wages are store in array.
+	empWage"[$totalWorkingDays"]="$(( $calDailyWage $empWorkHr))" #wages are store in dictionary.
 done
 	
-totalSalary=$(($totalEmpHr*$empRatePerHr))
+totalSalary=$((calDailyWage $totalEmpHr))
 echo "Daily Wage" ${empWage[@]};
+echo "All keys" ${!empWage[@]};
 
